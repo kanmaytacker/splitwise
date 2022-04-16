@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- Users can register and update their profiles
+- Users can register and update their profiles.
 - A user's profile should contain at least their name, phone number and password
 - Users can participate in expenses with other users
 - Users can participate in groups.
