@@ -17,15 +17,37 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    public UserDTO createUser(CreateUserDTO userRequest) {
+
+        // Encode plaintext password
+        String hashedPassword = passwordEncoder.encode(userRequest.getPassword());
+
+        // Convert DTO to user
+        User user = User.from(userRequest, hashedPassword);
+
+        // Persist the user
+        User persistedUser = userRepository.save(user);
+        return UserDTO.from(persistedUser);
+    }
+
     public Optional<User> getUser(Long userId) {
         return userRepository.findById(userId);
     }
 
-    public UserDTO createUser(CreateUserDTO userRequest) {
+    public UserDTO updateUser(Long userId, CreateUserDTO updateRequest) {
+        // Check if user exists
+        if (!userRepository.existsById(userId)) {
+            return null;
+        }
 
-        String encodedPassword = passwordEncoder.encode(userRequest.getPassword());
-        User user = userRepository.save(User.from(userRequest, encodedPassword));
+        String hashedPassword = passwordEncoder.encode(updateRequest.getPassword());
+        User user = User.from(updateRequest, hashedPassword);
+        user.setId(userId);
 
-        return UserDTO.from(user);
+        User persistedUser = userRepository.save(user);
+        return UserDTO.from(persistedUser);
     }
 }
+
+// MapStruct
+// Optional.isPresent

@@ -6,21 +6,21 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @Setter
-public class ResponseDTO<T> {
+public class ResponseDTO<DTO_TYPE> {
     private HttpStatus status;
-    private T data;
+    private DTO_TYPE data;
 
-    public static <T> ResponseDTO<T> success(T data) {
-        ResponseDTO<T> responseDTO = new ResponseDTO<>();
-        responseDTO.setStatus(HttpStatus.OK);
-        responseDTO.setData(data);
-        return responseDTO;
+    public static <DTO_TYPE> ResponseDTO<DTO_TYPE> notFound() {
+        ResponseDTO<DTO_TYPE> response = new ResponseDTO<>();
+        response.setStatus(HttpStatus.NOT_FOUND);
+        return response;
     }
 
-    public static <T> ResponseDTO<T> notFound() {
-        ResponseDTO<T> responseDTO = new ResponseDTO<>();
-        responseDTO.setStatus(HttpStatus.NOT_FOUND);
-        return responseDTO;
+    public static <DTO_TYPE> ResponseDTO<DTO_TYPE> success(DTO_TYPE data) {
+        ResponseDTO<DTO_TYPE> response = new ResponseDTO<>();
+        response.setStatus(HttpStatus.OK);
+        response.setData(data);
+        return response;
     }
 
 

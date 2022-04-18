@@ -16,11 +16,12 @@ public class User extends BaseModel {
     private String phoneNumber;
     private String hashedPassword;
 
-    public static User from(CreateUserDTO userRequest, String encodedPassword) {
+
+    public static User from(CreateUserDTO userDTO, String hashedPassword) {
         User user = new User();
-        user.setName(userRequest.getName());
-        user.setPhoneNumber(userRequest.getPhoneNumber());
-        user.setHashedPassword(encodedPassword);
+        user.setName(userDTO.getName());
+        user.setPhoneNumber(userDTO.getPhoneNumber());
+        user.setHashedPassword(hashedPassword);
         return user;
     }
 }
