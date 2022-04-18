@@ -3,6 +3,7 @@ package com.scaler.splitwise.controllers;
 import com.scaler.splitwise.dtos.CreateGroupDTO;
 import com.scaler.splitwise.dtos.GroupDTO;
 import com.scaler.splitwise.dtos.ResponseDTO;
+import com.scaler.splitwise.dtos.SettleResponseDTO;
 import com.scaler.splitwise.models.Group;
 import com.scaler.splitwise.services.GroupService;
 import com.scaler.splitwise.utils.ResponseUtils;
@@ -26,7 +27,13 @@ public class GroupController {
 
     @GetMapping("/group/{groupId}")
     public ResponseDTO<GroupDTO> getGroup(@PathVariable Long groupId) {
-        Optional<Group> expense = groupService.getGroup(groupId);
-        return ResponseUtils.toResponse(expense.map(GroupDTO::from));
+        Optional<Group> group = groupService.getGroup(groupId);
+        return ResponseUtils.toResponse(group.map(GroupDTO::from));
+    }
+
+    @PostMapping("/group/{groupId}/settle")
+    public ResponseDTO<SettleResponseDTO> settleGroupExpenses(@PathVariable Long groupId) {
+        Optional<SettleResponseDTO> transactions = groupService.settleExpenses(groupId);
+        return ResponseUtils.toResponse(transactions);
     }
 }

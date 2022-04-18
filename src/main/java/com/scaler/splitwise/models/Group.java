@@ -25,6 +25,6 @@ public class Group extends BaseModel {
     private List<Expense> expenses = new ArrayList<>();
 
     public static Group from(CreateGroupDTO createGroupRequest) {
-        return null;
+        return new Group();
     }
 }
