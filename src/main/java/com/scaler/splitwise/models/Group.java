@@ -1,5 +1,6 @@
 package com.scaler.splitwise.models;
 
+import com.scaler.splitwise.dtos.CreateGroupDTO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -23,4 +24,7 @@ public class Group extends BaseModel {
     @OneToMany
     private List<Expense> expenses = new ArrayList<>();
 
+    public static Group from(CreateGroupDTO createGroupRequest) {
+        return null;
+    }
 }

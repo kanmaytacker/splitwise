@@ -5,6 +5,7 @@ import com.scaler.splitwise.dtos.ResponseDTO;
 import com.scaler.splitwise.dtos.UserDTO;
 import com.scaler.splitwise.models.User;
 import com.scaler.splitwise.services.UserService;
+import com.scaler.splitwise.utils.ResponseUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,8 +26,7 @@ public class UserController {
     public ResponseDTO<UserDTO> getUser(@PathVariable Long userId) {
         Optional<User> user = userService.getUser(userId);
         Optional<UserDTO> userDTO = user.map(UserDTO::from);
-
-        return userDTO.map(ResponseDTO::success).orElse(ResponseDTO.notFound());
+        return ResponseUtils.toResponse(userDTO);
     }
 
     @PutMapping("/user/{userId}")

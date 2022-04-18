@@ -15,16 +15,16 @@ import java.util.Map;
 @Entity
 @Table(name = "EXPENSES")
 public class Expense extends BaseModel {
-    @ManyToOne
-    private User createdBy;
-
-    private long amount;
-
-    private Currency currency;
-
     @ElementCollection
     Map<User, Long> paidBy = new HashMap<>();
-
     @ElementCollection
     Map<User, Long> owedBy = new HashMap<>();
+    @ManyToOne
+    private User createdBy;
+    private long amount;
+    private Currency currency;
+
+    public static Expense from(CreateExpenseDTO expenseRequest, Map<User, Long> paidBy, Map<User, Long> owedBy) {
+        return null;
+    }
 }
