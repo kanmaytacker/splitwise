@@ -119,3 +119,11 @@ who owes what
 u1 Expense g1 iPay 1000 Percentage 10 20 30 40
 
 Assume that the members in the group are organised by their userids in ascending order
+
+# Reading List 
+- [Settle Up Algorithm used by Splitwise](https://www.quora.com/What-algorithm-or-solution-do-the-people-at-Splitwise-use-for-its-debt-simplification-feature)
+- [Bcrypt](https://auth0.com/blog/hashing-in-action-understanding-bcrypt/)
+- [JPA Annotations](https://www.baeldung.com/jpa-entities)
+- [HTTP Methods](https://nordicapis.com/ultimate-guide-to-all-9-standard-http-methods/)
+- [PUT vs PATCH](https://www.baeldung.com/http-put-patch-difference-spring)
+- [Spring controllers](https://www.baeldung.com/spring-controllers)
